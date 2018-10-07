@@ -218,6 +218,10 @@
     <Compile Include="Migrations\201810071535505_Test1.Designer.cs">
       <DependentUpon>201810071535505_Test1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810071625438_AddCustomerValidation.cs" />
+    <Compile Include="Migrations\201810071625438_AddCustomerValidation.Designer.cs">
+      <DependentUpon>201810071625438_AddCustomerValidation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomerModel.cs" />
@@ -326,6 +330,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810071535505_Test1.resx">
       <DependentUpon>201810071535505_Test1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810071625438_AddCustomerValidation.resx">
+      <DependentUpon>201810071625438_AddCustomerValidation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

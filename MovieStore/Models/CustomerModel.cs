@@ -16,13 +16,14 @@ namespace MovieStore.Models
 
         public bool IsSubscribedToNewsletter { get; set; }
 
+        [Required]
         public MembershipTypeModel MembershipType { get; set; }
 
         [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }
 
         [Display(Name = "Date of Birth")]
-
+        [Required]
         public DateTime? Birthdate { get; set; }
     }
 }
