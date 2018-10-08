@@ -16,7 +16,6 @@ namespace MovieStore.Models
 
         public bool IsSubscribedToNewsletter { get; set; }
 
-        [Required]
         public MembershipTypeModel MembershipType { get; set; }
 
         [Display(Name = "Membership Type")]
