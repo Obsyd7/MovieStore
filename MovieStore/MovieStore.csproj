@@ -222,6 +222,10 @@
     <Compile Include="Migrations\201810071625438_AddCustomerValidation.Designer.cs">
       <DependentUpon>201810071625438_AddCustomerValidation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810081019133_RemoveRequiredFromBirthDate.cs" />
+    <Compile Include="Migrations\201810081019133_RemoveRequiredFromBirthDate.Designer.cs">
+      <DependentUpon>201810081019133_RemoveRequiredFromBirthDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomerModel.cs" />
@@ -229,6 +233,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipTypeModel.cs" />
+    <Compile Include="Models\Min18YearsIfMemeber.cs" />
     <Compile Include="Models\MovieModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -333,6 +338,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810071625438_AddCustomerValidation.resx">
       <DependentUpon>201810071625438_AddCustomerValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810081019133_RemoveRequiredFromBirthDate.resx">
+      <DependentUpon>201810081019133_RemoveRequiredFromBirthDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
