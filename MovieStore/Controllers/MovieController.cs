@@ -33,9 +33,8 @@ namespace MovieStore.Controllers
         {
             var genres = _context.Genres.ToList();
 
-            var viewModel = new MovieFormViewModel
+            var viewModel = new MovieFormViewModel(new MovieModel())
             {
-                Movie = new  MovieModel(),
                 Genres = genres
             };
 
@@ -49,9 +48,8 @@ namespace MovieStore.Controllers
             if (movie == null)
                 return HttpNotFound();
 
-            var viewModel = new MovieFormViewModel()
+            var viewModel = new MovieFormViewModel(movie)
             {
-                Movie = movie,
                 Genres = _context.Genres.ToList()
             };
 
@@ -78,9 +76,8 @@ namespace MovieStore.Controllers
         {
         if (!ModelState.IsValid)
         {
-            var viewModel = new MovieFormViewModel()
+            var viewModel = new MovieFormViewModel(movie)
                 {
-                    Movie = movie,
                     Genres = _context.Genres.ToList()
                 };
 
