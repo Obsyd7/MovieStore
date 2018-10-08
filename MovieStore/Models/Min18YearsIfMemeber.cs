@@ -12,7 +12,8 @@ namespace MovieStore.Models
         {
             var customer = (CustomerModel) validationContext.ObjectInstance;
 
-            if (customer.MembershipTypeId == 0 || customer.MembershipTypeId == 1)
+            if (customer.MembershipTypeId == MembershipTypeModel.Unknown || 
+                customer.MembershipTypeId == MembershipTypeModel.PayAsYouGo)
             {
                 return ValidationResult.Success;
             }
