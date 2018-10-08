@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MovieStore.Models;
+using MovieStore.Models; 
 using MovieStore.ViewModels;
 
 namespace MovieStore.Controllers
@@ -36,6 +36,7 @@ namespace MovieStore.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(CustomerModel customer)
         {
             if (!ModelState.IsValid)
