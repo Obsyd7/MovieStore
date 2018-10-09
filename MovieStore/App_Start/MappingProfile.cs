@@ -12,8 +12,14 @@ namespace MovieStore.App_Start
     {
         public MappingProfile()
         {
+            //Domain to Dto
             Mapper.CreateMap<CustomerModel, CustomerDTO>();
+            Mapper.CreateMap<MovieModel, MovieDto>();
+
+
+            //Dto to Domain
             Mapper.CreateMap<CustomerDTO, CustomerModel>();
+            Mapper.CreateMap<MovieDto, MovieModel>();
         }
     }
 }

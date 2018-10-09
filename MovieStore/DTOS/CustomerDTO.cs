@@ -19,7 +19,6 @@ namespace MovieStore.DTOS
 
         public byte MembershipTypeId { get; set; }
 
-
         //[Min18YearsIfMember]
         public DateTime? Birthdate { get; set; }
     }
