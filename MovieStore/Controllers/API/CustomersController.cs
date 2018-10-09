@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
@@ -24,7 +25,7 @@ namespace MovieStore.Controllers.API
         }
 
         //GET /api/customers/1
-        public CustomerDTO GetCustomerModels(int id)
+        public IHttpActionResult GetCustomerModels(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
             if (customer == null)
@@ -32,16 +33,17 @@ namespace MovieStore.Controllers.API
                 throw  new HttpResponseException(HttpStatusCode.NotFound);
             }
 
-            return Mapper.Map<CustomerModel, CustomerDTO>(customer);
+            return Ok(Mapper.Map<CustomerModel, CustomerDTO>(customer));
         }
 
         //Post /api/customers
         [HttpPost]
-        public CustomerDTO CreateCustomerModel(CustomerDTO customerDto)
+        public IHttpActionResult CreateCustomerModel(CustomerDTO customerDto)
         {
             if (!ModelState.IsValid)
             {
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                //throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
             }
 
             var customer = Mapper.Map<CustomerDTO, CustomerModel>(customerDto);
@@ -50,7 +52,8 @@ namespace MovieStore.Controllers.API
 
             customerDto.Id = customer.Id;
 
-            return customerDto; 
+            //return customerDto; 
+            return Created(new Uri(Request.RequestUri + "/" + customer.Id), customerDto);
         }
 
 
