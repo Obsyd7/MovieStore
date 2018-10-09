@@ -71,7 +71,7 @@ namespace MovieStore.Controllers.API
             }
 
             Mapper.Map(customerDto, customerInDb);
-            _context.SaveChanges();
+            _context.SaveChanges(); 
 
         }
 
