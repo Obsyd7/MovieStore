@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using Microsoft.Owin.Security.Provider;
+using AutoMapper;
+using MovieStore.DTOS;
 using MovieStore.Models;
 
 namespace MovieStore.Controllers.API
@@ -19,13 +18,13 @@ namespace MovieStore.Controllers.API
         }
         
         //GET /api/customers
-        public IEnumerable<CustomerModel> GetCustomerModels()
+        public IEnumerable<CustomerDTO> GetCustomerModels()
         {
-            return _context.Customers.ToList();
+            return _context.Customers.ToList().Select(Mapper.Map<CustomerModel, CustomerDTO>);
         }
 
         //GET /api/customers/1
-        public CustomerModel GetCustomerModels(int id)
+        public CustomerDTO GetCustomerModels(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
             if (customer == null)
@@ -33,28 +32,31 @@ namespace MovieStore.Controllers.API
                 throw  new HttpResponseException(HttpStatusCode.NotFound);
             }
 
-            return customer;
+            return Mapper.Map<CustomerModel, CustomerDTO>(customer);
         }
 
         //Post /api/customers
         [HttpPost]
-        public CustomerModel CreateCustomerModel(CustomerModel customer)
+        public CustomerDTO CreateCustomerModel(CustomerDTO customerDto)
         {
             if (!ModelState.IsValid)
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
 
+            var customer = Mapper.Map<CustomerDTO, CustomerModel>(customerDto);
             _context.Customers.Add(customer);
             _context.SaveChanges();
 
-            return customer;
+            customerDto.Id = customer.Id;
+
+            return customerDto; 
         }
 
 
         //PUT /api/customers/1
         [HttpPut]
-        public void UpdateCustomer(int id, CustomerModel customer)
+        public void UpdateCustomer(int id, CustomerDTO customerDto)
         {
             if (!ModelState.IsValid)
             {
@@ -68,11 +70,7 @@ namespace MovieStore.Controllers.API
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
 
-            customerInDb.Name = customer.Name;
-            customerInDb.Birthdate = customer.Birthdate;
-            customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
-            customerInDb.MembershipTypeId = customer.MembershipTypeId;
-
+            Mapper.Map(customerDto, customerInDb);
             _context.SaveChanges();
 
         }

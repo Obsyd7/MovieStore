@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+using MovieStore.Models;
 
-namespace MovieStore.Models
+namespace MovieStore.DTOS
 {
-    public class CustomerModel
+    public class CustomerDTO
     {
         public int Id { get; set; }
 
@@ -13,12 +17,9 @@ namespace MovieStore.Models
 
         public bool IsSubscribedToNewsletter { get; set; }
 
-        public MembershipTypeModel MembershipType { get; set; }
-
-        [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }
 
-        [Display(Name = "Date of Birth")]
+
         [Min18YearsIfMember]
         public DateTime? Birthdate { get; set; }
     }
