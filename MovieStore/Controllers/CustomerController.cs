@@ -68,7 +68,16 @@ namespace MovieStore.Controllers
         public ActionResult Index()
         {
             var customers = _context.Customers.Include(c => c.MembershipType);
-            return View(customers);
+            if (User.IsInRole(RoleName.CanManageMovies))
+            {
+                return View("CustomerList", customers);
+            }
+            else
+            {
+                return View("ReadOnlyCustomerList", customers);
+            }
+            
+            
         }
 
         public ActionResult Details(int id)

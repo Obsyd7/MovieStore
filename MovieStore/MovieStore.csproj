@@ -256,6 +256,10 @@
     <Compile Include="Migrations\201810120836579_AddDrivingLicenseToApplicationUser.Designer.cs">
       <DependentUpon>201810120836579_AddDrivingLicenseToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810121030521_AddPhoneNumberProfileData.cs" />
+    <Compile Include="Migrations\201810121030521_AddPhoneNumberProfileData.Designer.cs">
+      <DependentUpon>201810121030521_AddPhoneNumberProfileData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomerModel.cs" />
@@ -509,12 +513,13 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Customer\CustomerForm.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
-    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\CustomerList.cshtml" />
     <Content Include="Views\Movie\MovieForm.cshtml" />
     <Content Include="Views\Movie\List.cshtml" />
     <Content Include="Views\Movie\Details.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Movie\ReadOnlyList.cshtml" />
+    <Content Include="Views\Customer\ReadOnlyCustomerList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -559,6 +564,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810120836579_AddDrivingLicenseToApplicationUser.resx">
       <DependentUpon>201810120836579_AddDrivingLicenseToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810121030521_AddPhoneNumberProfileData.resx">
+      <DependentUpon>201810121030521_AddPhoneNumberProfileData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
