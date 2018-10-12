@@ -20,6 +20,7 @@ namespace MovieStore.Controllers
             _context.Dispose();
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
@@ -34,6 +35,7 @@ namespace MovieStore.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Save(CustomerModel customer)
         {
             if (!ModelState.IsValid)
@@ -79,6 +81,7 @@ namespace MovieStore.Controllers
             return View(customer);
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Edit(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
