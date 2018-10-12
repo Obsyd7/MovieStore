@@ -28,3 +28,6 @@ textarea {
 .input-validation-error {
     border: 2px solid red;
 }
+.navbar-collapse.collapse.in {
+    display: block!important;
+}
